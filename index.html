@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>Falafel Games | Sudoku</title>
+  <link rel="icon" href="Sudoku.png" type="image/png">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      text-align: center;
+      background: #f0f0f0;
+    }
+
+    .game-box {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .game-logo {
+      width: 150px; /* جعل الصورة أعرض */
+      height: auto; /* الحفاظ على التناسب */
+      display: block;
+      border-radius: 5px;
+    }
+
+    .game-box:hover .game-logo {
+      opacity: 0.8;
+    }
+
+    .c {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h1.c {
+      margin-top: 180px; /* زيادة المسافة لتجنب التداخل مع الشعار الأعرض */
+    }
+
+    #gameframe {
+      width: 80%;
+      height: 500px;
+      border: 2px solid #000;
+      margin-top: 20px;
+    }
+
+    button.b {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button.b:hover {
+      background-color: #45a049;
+    }
+
+    @media (max-width: 600px) {
+      .game-box {
+        top: 10px;
+        left: 10px;
+      }
+      .game-logo {
+        width: 100px; /* عرض معقول للشاشات الصغيرة */
+        height: auto;
+      }
+      #gameframe {
+        width: 90%;
+        height: 70vh;
+      }
+      h1.c {
+        margin-top: 120px; /* تعديل المسافة للشاشات الصغيرة */
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="game-box" onclick="window.location.href='/'" target="_blank">
+    <img class="game-logo" src="index refresh.png" alt="Falafel Games homepage logo">
+  </a>
+  <h1 class="c">Sudoku</h1>
+
+  <iframe class="c" id="gameframe" src="Sudoku.html" title="Sudoku game" allowfullscreen="">
+    <p>Your browser does not support iframes. Please visit <a href="Sudoku.html">the game directly</a>.</p>
+  </iframe>
+  <br>
+  <button class="b c" onclick="goFullscreen()" aria-label="Toggle fullscreen mode">Full Screen ⛶</button>
+
+  <script>
+    function goFullscreen() {
+      const iframe = document.getElementById("gameframe");
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen().catch(err => {
+          alert(`Error enabling fullscreen: ${err.message}. Please try another browser.`);
+        });
+      } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.mozRequestFullScreen) {
+        iframe.mozRequestFullScreen();
+      } else if (iframe.msRequestFullscreen) {
+        iframe.msRequestFullscreen();
+      } else {
+        alert("Fullscreen mode is not supported by your browser. Try zooming in or using another browser.");
+      }
+    }
+  </script>
+
+
+</body></html>
